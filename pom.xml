@@ -27,22 +27,22 @@
     <dependency> 
       <groupId>org.eclipse.paho</groupId>  
       <artifactId>org.eclipse.paho.client.mqttv3</artifactId>  
-      <version>1.1.0</version> 
+      <version>1.1.0</version>
     </dependency>  
     <dependency> 
       <groupId>org.yaml</groupId>  
       <artifactId>snakeyaml</artifactId>  
-      <version>1.11</version> 
+      <version>1.26</version>
     </dependency>  
     <dependency> 
       <groupId>net.objecthunter</groupId>  
       <artifactId>exp4j</artifactId>  
-      <version>0.4.5</version> 
+      <version>0.4.5</version>
     </dependency>  
     <dependency> 
       <groupId>com.neuronrobotics</groupId>  
       <artifactId>nrjavaserial</artifactId>  
-      <version>3.12.1</version> 
+      <version>3.12.1</version>
     </dependency> 
   </dependencies>  
   <properties> 
