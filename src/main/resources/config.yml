@@ -1,4 +1,10 @@
 
+logging: {
+  level: INFO,
+  consoleLogger: {},
+  numberedExceptionLogger: {}
+}
+
 # Configure serial modbus. 
 modbus: {
     serial: { 
@@ -8,18 +14,17 @@ modbus: {
     }, 
 }
 
-# Setup the MQTT broker 
-mqtt: {
-    broker: {  
-        host: 192.168.1.5,
-        port: 1883
-    }, 
-    dataTopic: modbus
-}   
+# Setup RabbitMq
+rabbitMq: {
+  hostname: 192.168.1.1,
+  username: power-meter,
+  password: 44e241b11d2e74c8,
+  virtualHost: '/'
+}
 
 slaves: [
     {
-        name: wattnode1,
+        name: wattnode,
         deviceId: 1,
         pollInterval: 60,
         zeroBased: true,
@@ -82,5 +87,6 @@ slaves: [
     }
 ]
 
+resultsExchange: 'Power Meter'
     
 

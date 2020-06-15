@@ -15,6 +15,10 @@
  */
 package me.legrange.bridge.config;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 /**
@@ -23,10 +27,15 @@ import java.util.List;
  */
 public class Slave {
 
+    @NotBlank(message = "Slave name must be supplied")
     private String name;
+    @Min(message = "Device ID must be between 1 and 255", value = 1)
+    @Max(message = "Device ID must be between 1 and 255", value = 255)
     private int deviceId = 1;
+    @Min(message = "Poll interval must be bigger than 0", value = 1)
     private int pollInterval = 60;
     private boolean zeroBased = false;
+    @NotEmpty(message = "At least one register needs to be defined")
     private List<Register> registers; 
 
     public String getName() {
@@ -69,13 +78,6 @@ public class Slave {
     public void setRegisters(List<Register> registers) {
         this.registers = registers;
     }
-    
-    void validate() throws ConfigurationException { 
-        if (name == null) throw new ConfigurationException("Slave name not defined");
-        if (registers == null) throw new ConfigurationException("Slave has no registers defined");
-        for (Register reg : registers) {
-            reg.validate();
-        }
-    }
+
 
 }

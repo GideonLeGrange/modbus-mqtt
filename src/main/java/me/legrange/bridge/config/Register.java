@@ -22,6 +22,10 @@ package me.legrange.bridge.config;
  * @author Gideon le Grange https://github.com/GideonLeGrange
  */
 public class Register {
+    private String name;
+    private int address;
+    private int length;
+    private String type;
 
     public String getName() {
         return name;
@@ -47,34 +51,14 @@ public class Register {
         this.length = length;
     }
 
-    public String getTransform() {
-        return transform;
-    }
-
     public String getType() {
         return type;
     }
 
-    public void setType(String type) throws ConfigurationException {
+    public void setType(String type)  {
         this.type = type;
     }
     
-      
-    public void setTransform(String expr) throws ConfigurationException {
-        this.transform = expr;
-    }
- 
-    void validate() throws ConfigurationException {
-        if (name == null) throw new ConfigurationException("Register name not defined");
-        if (address <= 0) throw new ConfigurationException("Register '%s' address not defined", name);
-        if (length <= 0) throw new ConfigurationException("Register '%s' length not defined", name);
-        if (type == null) throw new ConfigurationException("Register type not defined");
-    }
-    
-    private String name;
-    private int address;
-    private int length;
-    private String type;
-    private String transform = "_";
+
 
 }

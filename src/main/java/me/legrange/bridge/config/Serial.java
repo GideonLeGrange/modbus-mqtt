@@ -16,14 +16,17 @@
 
 package me.legrange.bridge.config;
 
+import javax.validation.constraints.NotNull;
+
 /**
  *
  * @since 1.0
  * @author Gideon le Grange https://github.com/GideonLeGrange
  */
 public class Serial {
-
-    private int speed;
+    @NotNull(message = "The serial port must be defined")
+    private String port;
+    private int speed = 9600;
 
     /**
      * Get the value of speed
@@ -43,7 +46,6 @@ public class Serial {
         this.speed = speed;
     }
 
-    private String port;
 
     /**
      * Get the value of port
@@ -63,8 +65,4 @@ public class Serial {
         this.port = port;
     }
 
-    void validate() throws ConfigurationException { 
-        if (port == null) throw new ConfigurationException("Serial port not defined");
-        if (speed <=0) throw new ConfigurationException("Serial speed not defined");
-    }
 }

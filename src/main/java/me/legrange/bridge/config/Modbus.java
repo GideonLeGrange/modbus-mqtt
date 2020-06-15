@@ -16,6 +16,8 @@
 
 package me.legrange.bridge.config;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * Modbus configuration
  *
@@ -23,6 +25,8 @@ package me.legrange.bridge.config;
  */
 public class Modbus {
 
+    @NotNull(message = "Serial port must be configured")
+    private Serial serial;
 
     /**
      * Get the value of serial
@@ -42,12 +46,6 @@ public class Modbus {
         this.serial = serial;
     }
 
-    void validate() throws ConfigurationException { 
-        if (serial == null) throw new ConfigurationException("No serial configuration under modbus");
-        serial.validate();
-    }
-    
 
-    private Serial serial;
     
 }
